@@ -1,0 +1,11 @@
+[Unit]
+Description=Verdaccio Private NPM Registry
+
+[Service]
+User=verdaccio
+Group=verdaccio
+WorkingDirectory=/home/verdaccio
+ExecStart=verdaccio --listen {{ host }}:{{ port }} {{ args | join('-- ') }}
+
+[Install]
+WantedBy=multi-user.target

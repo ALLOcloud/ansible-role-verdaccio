@@ -1,0 +1,21 @@
+- name: User | Create verdaccio's user
+  user:
+    name: verdaccio
+    state: present
+
+- name: File | Create systemd directory
+  file:
+    path: /etc/systemd/system
+    state: directory
+
+- name: Template | Generate Systemd service file
+  template:
+    src: etc/systemd/system/verdaccio-registry.service.j2
+    dest: /etc/systemd/system/verdaccio-registry.service
+  notify: restart verdaccio
+
+- name: Systemd | Start & enable verdaccio's service
+  systemd:
+    name: verdaccio-registry.service
+    state: started
+    enabled: yes

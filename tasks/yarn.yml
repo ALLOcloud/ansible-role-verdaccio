@@ -1,0 +1,18 @@
+- name: APT | Add Yarn's GPG key into APT
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+    id: "72ECF46A56B4AD39C907BBB71646B01B86E50310"
+    state: present
+
+- name: APT | Add Yarn deb repository
+  apt_repository:
+    repo: "deb https://dl.yarnpkg.com/debian/ stable main"
+    filename: yarn
+    state: present
+
+- name: APT | Install Yarn
+  apt:
+    pkg:
+      - yarn
+    state: latest
+    update_cache: yes

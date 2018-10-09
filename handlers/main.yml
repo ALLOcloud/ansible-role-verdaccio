@@ -1,0 +1,5 @@
+- name: restart verdaccio
+  systemd:
+    name: verdaccio-registry.service
+    state: restarted
+    daemon-reload: yes

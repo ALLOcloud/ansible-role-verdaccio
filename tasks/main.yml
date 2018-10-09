@@ -1,0 +1,20 @@
+- name: APT | Install apt-transport-https
+  apt:
+    pkg:
+      - apt-transport-https
+    state: present
+    update_cache: yes
+
+- import_tasks: nodejs.yml
+  tags:
+    - nodejs
+
+- import_tasks: yarn.yml
+  tags:
+    - nodejs
+    - yarn
+
+- import_tasks: verdaccio.yml
+  tags:
+    - nodejs
+    - verdaccio
