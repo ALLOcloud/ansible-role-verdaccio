@@ -5,7 +5,7 @@ Description=Verdaccio Private NPM Registry
 User=verdaccio
 Group=verdaccio
 WorkingDirectory=/home/verdaccio
-ExecStart=verdaccio --listen {{ host }}:{{ port }} {{ args | join('-- ') }}
+ExecStart=/usr/bin/verdaccio --listen {{ verdaccio_host }}:{{ verdaccio_port }} {{ verdaccio_args | join('-- ') }}
 
 [Install]
 WantedBy=multi-user.target

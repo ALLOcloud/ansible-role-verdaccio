@@ -1,3 +1,9 @@
+- name: NPM | Install verdaccio globally
+  npm:
+    name: verdaccio
+    production: yes
+    global: yes
+
 - name: User | Create verdaccio's user
   user:
     name: verdaccio
